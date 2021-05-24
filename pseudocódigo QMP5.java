@@ -27,7 +27,7 @@ public class Usuario{
 	public List<Sugerencias> sugerenciasAceptadas;
 	
 	public void agregarPrenda(Prenda prenda, Guardarropas guardarropas){
-		guardarropas.agregarPrenda(prenda);
+		guardarropas.agregarPrenda(prenda); //Delego para no tocar directamente los atributos
 	}
 	
 	public void eliminarPrenda(Prenda prenda, Guardarropas guardarropas){
@@ -46,12 +46,12 @@ public class Usuario{
 	
 	public void deshacerSugerenciaAceptada(Sugerencia sugerencia){
 		sugerencia.tipoSugerencia.deshacerSugerencia(prenda);
-		sugerenciasPendientes.add(sugerencia);
+		sugerenciasPendientes.add(sugerencia); //Entiendo que vuelve a quedar ahí disponible para hacerse
 		sugerenciasAceptadas.remove(sugerencia);
 	}
 	
 	public void compartirGuardarropasCon(Usuario usuario, Guardarropas guardarropas){
-		usuario.agregarGuardarropas(guardarropas);
+		usuario.agregarGuardarropas(guardarropas);  //Rompo encapsulamiento agregándole el guardarropas de una? Debería sugerirlo?
 	}
 	
 	public void agregarUnGuardarropas(Guardarropas guardarropas){
