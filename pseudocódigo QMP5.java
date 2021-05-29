@@ -34,14 +34,10 @@ public class Usuario{
 		guardarropas.eliminarPrenda(prenda);
 	}
 	
-	public void revisarSugerenciasDeModificacion(){
-		aquí para cada sugerencia pendiente decido
-		si acepta
-			sugerenciasAceptadas.add(sugerenciaActual);
-			sugerenciasPendientes.remove(sugerenciaActual);
-			sugerenciaActual.tipoSugerencia.concretarSugerencia(sugerencia); 
-		si no acepta
-			sugerenciaPendientes.remove(sugerenciaActual)
+	public void aceptarSugerencia(Sugerencia sugerencia){
+		sugerencia.concretarSugerencia();
+		sugerenciasAceptadas.add(sugerenciaActual);
+		sugerenciasPendientes.remove(sugerenciaActual);
 	}
 	
 	public void deshacerSugerenciaAceptada(Sugerencia sugerencia){
@@ -70,6 +66,10 @@ public class Sugerencia{ //Data class que me permite ganar abstracción
 		this.prenda = prenda;
 		this.tipo = tipo;
 		this.guardarropas = guardarropas;
+	}
+	
+	public void concretarSugerencia(){
+		this.tipo.concretarSugerencia(this);
 	}
 }
 
