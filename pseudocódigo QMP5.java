@@ -54,10 +54,7 @@ public class Usuario{
 	public void agregarUnGuardarropas(Guardarropas guardarropas){
 		this.guardarropas.add(guardarropas)
 	}
-	
-	public void sugerirPrenda(Prenda prenda, Usuario usuario, TipoSugerencia tipo){
-		usuario.recibirSugerencia(new Sugerencia(prenda, tipo, this);
-	}
+
 	
 	public void recibirSugerencia(Sugerencia sugerencia){
 		this.sugerenciasPendientes.add(sugerencia);
@@ -65,14 +62,12 @@ public class Usuario{
 } 
 
 public class Sugerencia{ //Data class que me permite ganar abstracción
-	Usuario usuario sugeridor;
 	TipoSugerencia tipo;
 	Prenda prenda;
 	
-	public Sugerencia(Prenda prenda, TipoSugerencia tipo, Usuario usuarioSugeridor){
+	public Sugerencia(Prenda prenda, TipoSugerencia tipo){
 		this.prenda = prenda;
 		this.tipo = tipo;
-		this.usuarioSugeridor = usuarioSugeridor;
 	}
 }
 
