@@ -50,9 +50,6 @@ public class Usuario{
 		sugerenciasAceptadas.remove(sugerencia);
 	}
 	
-	public void compartirGuardarropasCon(Usuario usuario, Guardarropas guardarropas){
-		usuario.agregarGuardarropas(guardarropas);  //Rompo encapsulamiento agregándole el guardarropas de una? Debería sugerirlo?
-	}
 	
 	public void agregarUnGuardarropas(Guardarropas guardarropas){
 		this.guardarropas.add(guardarropas)
