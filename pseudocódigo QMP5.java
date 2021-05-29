@@ -23,8 +23,8 @@ public class Guardarropas{
 
 public class Usuario{
 	public List<Guardarropas> guardarropas;
-	public List<Sugerencias> sugerenciasPendientes;
-	public List<Sugerencias> sugerenciasAceptadas;
+	public List<Propuesta> propuestasPendientes;
+	public List<Propuesta> propuestasAceptadas;
 	
 	public void agregarPrenda(Prenda prenda, Guardarropas guardarropas){
 		guardarropas.agregarPrenda(prenda); //Delego para no tocar directamente los atributos
@@ -34,16 +34,16 @@ public class Usuario{
 		guardarropas.eliminarPrenda(prenda);
 	}
 	
-	public void aceptarSugerencia(Sugerencia sugerencia){
-		sugerencia.concretarSugerencia();
-		sugerenciasAceptadas.add(sugerenciaActual);
-		sugerenciasPendientes.remove(sugerenciaActual);
+	public void aceptarPropuesta(Propuesta propuesta){
+		propuesta.concretarPropuesta();
+		propuestasAceptadas.add(propuestaActual);
+		propuestasPendientes.remove(propuestaActual);
 	}
 	
-	public void deshacerSugerenciaAceptada(Sugerencia sugerencia){
-		sugerencia.tipoSugerencia.deshacerSugerencia(sugerencia);
-		sugerenciasPendientes.add(sugerencia); //Entiendo que vuelve a quedar ahí disponible para hacerse
-		sugerenciasAceptadas.remove(sugerencia);
+	public void deshacerPropuestaAceptada(Propuesta propuesta){
+		propuesta.tipoPropuesta.deshacerPropuesta(propuesta);
+		propuestasPendientes.add(propuesta); //Entiendo que vuelve a quedar ahí disponible para hacerse
+		propuestasAceptadas.remove(propuesta);
 	}
 	
 	
@@ -52,40 +52,40 @@ public class Usuario{
 	}
 
 	
-	public void recibirSugerencia(Sugerencia sugerencia){
-		this.sugerenciasPendientes.add(sugerencia);
+	public void recibirPropuesta(Propuesta propuesta){
+		this.propuestasPendientes.add(propuesta);
 	}
 } 
 
-public class Sugerencia{ //Data class que me permite ganar abstracción
-	TipoSugerencia tipo;
+public class Propuesta{ //Data class que me permite ganar abstracción
+	TipoPropuesta tipo;
 	Prenda prenda;
 	Guardarropas guardarropas;
 	
-	public Sugerencia(Prenda prenda, TipoSugerencia tipo, Guardarropas guardarropas){
+	public Propuesta(Prenda prenda, TipoPropuesta tipo, Guardarropas guardarropas){
 		this.prenda = prenda;
 		this.tipo = tipo;
 		this.guardarropas = guardarropas;
 	}
 	
-	public void concretarSugerencia(){
-		this.tipo.concretarSugerencia(this);
+	public void concretarPropuesta(){
+		this.tipo.concretarPropuesta(this);
 	}
 }
 
-public enum TipoSugerencia{
+public enum TipoPropuesta{
 	AGREGAR, ELIMINAR
 	
-	AGREGAR.concretarSugerencia(Sugerencia sugerencia){
-		sugerencia.getGuardarropas.agregarPrenda(sugerencia.getPrenda);
+	AGREGAR.concretarPropuesta(Propuesta propuesta){
+		propuesta.getGuardarropas.agregarPrenda(propuesta.getPrenda);
 	}
-	AGREGAR.deshacerSugerencia(Sugerencia sugerencia){
-		sugerencia.getGuardarropas.eliminarPrenda(sugerencia.getPrenda);
+	AGREGAR.deshacerPropuesta(Propuesta propuesta){
+		propuesta.getGuardarropas.eliminarPrenda(propuesta.getPrenda);
 	}
 	
-	ELIMINAR.concretarSugerencia(Sugerencia sugerencia){
-		sugerencia.getGuardarropas.eliminarPrenda(sugerencia.getPrenda);
+	ELIMINAR.concretarPropuesta(Propuesta propuesta){
+		propuesta.getGuardarropas.eliminarPrenda(propuesta.getPrenda);
 	}
-	ELIMINAR.deshacerSugerencia(Sugerencia sugerencia){
-		sugerencia.getGuardarropas.agregarPrenda(sugerencia.getPrenda);
+	ELIMINAR.deshacerPropuesta(Propuesta propuesta){
+		propuesta.getGuardarropas.agregarPrenda(propuesta.getPrenda);
 	}
