@@ -9,8 +9,7 @@ public class Usuario{
 }
 
 public class RecomendacionDelDia{
-  RecomendacionDelDia recomendacionDiaria;
-  //Debería tener info de qué implica
+  //Debería tener info de qué implica -> Un string con un mensaje? Tipo "No salgas en auto que hay probabilidad de granizo!"?
 }
 
 public class RepositorioDeAlertasMeteorológicasVigentes{
