@@ -60,11 +60,9 @@ public class Mail implements AccionAlerta{
 }
 
 public class Recalculo implements AccionAlerta{
-  MailSender mailSender;
-
   public void notificar(){
-    //qué haría?? una notificacion?
-  }
+  //qué haría?? una notificacion de RecomendacionActualizada?? -> revisar si estaría OK interfaz
+}
 
   public void actualizarRecomendacion(){
     //TODO
